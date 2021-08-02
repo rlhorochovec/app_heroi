@@ -11,7 +11,8 @@ class HeroiService {
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
-      List<HeroiModel> cases = body.map((dynamic item) => HeroiModel.fromJson(item)).toList();
+      List<HeroiModel> cases =
+          body.map((dynamic item) => HeroiModel.fromJson(item)).toList();
       return cases;
     } else {
       throw "Failed to load list";
@@ -79,5 +80,4 @@ class HeroiService {
       throw "Failed to delete";
     }
   }
-
 }
