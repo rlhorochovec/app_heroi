@@ -147,7 +147,10 @@ class _HeroiEditState extends State<HeroiEdit> {
                                             nomeCivil:
                                                 _nomeCivilController.text,
                                             universo: universo));
-                                    Navigator.pop(context);
+                                    Navigator.popUntil(
+                                        context,
+                                        ModalRoute.withName(
+                                            Navigator.defaultRouteName));
                                   }
                                 },
                                 child: Text('Salvar'),

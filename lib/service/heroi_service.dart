@@ -10,7 +10,8 @@ class HeroiService {
     Response res = await get(Uri.parse('$apiUrl/all'));
 
     if (res.statusCode == 200) {
-      List<dynamic> body = jsonDecode(res.body);
+      String source = Utf8Decoder().convert(res.bodyBytes);
+      List<dynamic> body = jsonDecode(source);
       List<HeroiModel> herois =
           body.map((dynamic item) => HeroiModel.fromJson(item)).toList();
       return herois;
@@ -20,10 +21,11 @@ class HeroiService {
   }
 
   Future<HeroiModel> getHeroiById(String id) async {
-    final response = await get(Uri.parse('$apiUrl/$id'));
+    final res = await get(Uri.parse('$apiUrl/$id'));
 
-    if (response.statusCode == 200) {
-      return HeroiModel.fromJson(json.decode(response.body));
+    if (res.statusCode == 200) {
+      String source = Utf8Decoder().convert(res.bodyBytes);
+      return HeroiModel.fromJson(json.decode(source));
     } else {
       throw Exception('Failed to load');
     }
@@ -36,15 +38,16 @@ class HeroiService {
       'universo': heroi.universo
     };
 
-    final Response response = await post(
+    final Response res = await post(
       Uri.parse('$apiUrl'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(data),
     );
-    if (response.statusCode == 200) {
-      return HeroiModel.fromJson(json.decode(response.body));
+    if (res.statusCode == 200) {
+      String source = Utf8Decoder().convert(res.bodyBytes);
+      return HeroiModel.fromJson(json.decode(source));
     } else {
       throw Exception('Failed to post');
     }
@@ -57,15 +60,16 @@ class HeroiService {
       'universo': heroi.universo
     };
 
-    final Response response = await put(
+    final Response res = await put(
       Uri.parse('$apiUrl/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(data),
     );
-    if (response.statusCode == 200) {
-      return HeroiModel.fromJson(json.decode(response.body));
+    if (res.statusCode == 200) {
+      String source = Utf8Decoder().convert(res.bodyBytes);
+      return HeroiModel.fromJson(json.decode(source));
     } else {
       throw Exception('Failed to update');
     }
