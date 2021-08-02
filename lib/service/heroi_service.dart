@@ -11,9 +11,9 @@ class HeroiService {
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
-      List<HeroiModel> cases =
+      List<HeroiModel> herois =
           body.map((dynamic item) => HeroiModel.fromJson(item)).toList();
-      return cases;
+      return herois;
     } else {
       throw "Failed to load list";
     }

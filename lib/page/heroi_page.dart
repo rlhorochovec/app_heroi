@@ -1,4 +1,5 @@
 import 'package:app_heroi/model/heroi_model.dart';
+import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _HeroiPageState extends State<HeroiPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //_navigateToAddScreen(context);
+          _navigateToAddHeroi(context);
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
@@ -59,12 +60,11 @@ class _HeroiPageState extends State<HeroiPage> {
     return futureHerois;
   }
 
-/*
-  _navigateToAddScreen (BuildContext context) async {
+  _navigateToAddHeroi (BuildContext context) async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AddDataWidget()),
+      MaterialPageRoute(builder: (context) => HeroiAdd()),
     );
   }
-  */
+  
 }
