@@ -2,6 +2,8 @@ import 'package:app_heroi/model/heroi_model.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
+import 'heroi_edit.dart';
+
 class HeroiDetail extends StatefulWidget {
   HeroiDetail(this.heroi);
 
@@ -20,7 +22,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ficha'),
+        title: Text('Detalhes do Herói'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -67,8 +69,6 @@ class _HeroiDetailState extends State<HeroiDetail> {
                           ],
                         ),
                       ),
-
-                      /*
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: Column(
@@ -76,33 +76,31 @@ class _HeroiDetailState extends State<HeroiDetail> {
                             RaisedButton(
                               splashColor: Colors.red,
                               onPressed: () {
-                                _navigateToEditScreen(context, widget.heroi);
+                                _navigateToEditHeroi(context, widget.heroi);
                               },
-                              child: Text('Edit', style: TextStyle(color: Colors.white)),
-                              color: Colors.blue,
+                              child: Text('Editar'),
                             ),
                             RaisedButton(
                               splashColor: Colors.red,
                               onPressed: () {
                                 _confirmDialog();
                               },
-                              child: Text('Delete', style: TextStyle(color: Colors.white)),
-                              color: Colors.blue,
+                              child: Text('Excluir'),
                             )
                           ],
                         ),
-                      ),*/
+                      ),
                     ],
                   ))),
         ),
       ),
     );
   }
-/*
-  _navigateToEditScreen (BuildContext context, Cases cases) async {
+
+  _navigateToEditHeroi(BuildContext context, HeroiModel heroi) async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => EditDataWidget(cases)),
+      MaterialPageRoute(builder: (context) => HeroiEdit(heroi)),
     );
   }
 
@@ -112,24 +110,25 @@ class _HeroiDetailState extends State<HeroiDetail> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Warning!'),
+          title: Text('Confirme!'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Are you sure want delete this item?'),
+                Text('Tem certeza que deseja deletar?'),
               ],
             ),
           ),
           actions: <Widget>[
             FlatButton(
-              child: Text('Yes'),
+              child: Text('Sim'),
               onPressed: () {
-                api.deleteCase(widget.heroi.id);
-                Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
+                api.deleteHeroi(widget.heroi.id);
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Navigator.defaultRouteName));
               },
             ),
             FlatButton(
-              child: const Text('No'),
+              child: const Text('Não'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -138,5 +137,5 @@ class _HeroiDetailState extends State<HeroiDetail> {
         );
       },
     );
-  }*/
+  }
 }

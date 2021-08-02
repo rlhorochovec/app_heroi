@@ -44,7 +44,7 @@ class _HeroiPageState extends State<HeroiPage> {
         onPressed: () {
           _navigateToAddHeroi(context);
         },
-        tooltip: 'Increment',
+        tooltip: 'Novo',
         child: Icon(Icons.add),
       ),
     );

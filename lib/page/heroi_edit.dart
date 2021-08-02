@@ -4,28 +4,45 @@ import 'package:flutter/material.dart';
 
 enum Universo { Marvel, DC }
 
-class HeroiAdd extends StatefulWidget {
-  HeroiAdd();
+class HeroiEdit extends StatefulWidget {
+  HeroiEdit(this.herois);
+
+  final HeroiModel herois;
 
   @override
-  _HeroiAddState createState() => _HeroiAddState();
+  _HeroiEditState createState() => _HeroiEditState();
 }
 
-class _HeroiAddState extends State<HeroiAdd> {
-  _HeroiAddState();
+class _HeroiEditState extends State<HeroiEdit> {
+  _HeroiEditState();
 
   final HeroiService api = HeroiService();
   final _addKey = GlobalKey<FormState>();
+  String id = '';
   final _nomeController = TextEditingController();
   final _nomeCivilController = TextEditingController();
   String universo = 'Marvel';
   Universo _universo = Universo.Marvel;
 
   @override
+  void initState() {
+    id = widget.herois.id;
+    _nomeController.text = widget.herois.nome;
+    _nomeCivilController.text = widget.herois.nomeCivil;
+    universo = widget.herois.universo;
+    if (widget.herois.universo == 'Marvel') {
+      _universo = Universo.Marvel;
+    } else {
+      _universo = Universo.DC;
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Novo Herói'),
+        title: Text('Editar Herói'),
       ),
       body: Form(
         key: _addKey,
@@ -123,10 +140,13 @@ class _HeroiAddState extends State<HeroiAdd> {
                                 onPressed: () {
                                   if (_addKey.currentState.validate()) {
                                     _addKey.currentState.save();
-                                    api.createHeroi(HeroiModel(
-                                        nome: _nomeController.text,
-                                        nomeCivil: _nomeCivilController.text,
-                                        universo: universo));
+                                    api.updateHeroi(
+                                        id,
+                                        HeroiModel(
+                                            nome: _nomeController.text,
+                                            nomeCivil:
+                                                _nomeCivilController.text,
+                                            universo: universo));
                                     Navigator.pop(context);
                                   }
                                 },
