@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Super Heróis',
       theme: ThemeData(
-        primaryColor: Colors.greenAccent,
-        primarySwatch: Colors.purple,
+        primaryColor: Colors.blueGrey.shade900,
+        primarySwatch: Colors.blueGrey,
         brightness: Brightness.dark,
       ),
       home: HeroiPage(),
