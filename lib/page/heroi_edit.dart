@@ -59,7 +59,8 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Nome'),
+                              Text('Nome', style: TextStyle(
+                                    color: Colors.black.withOpacity(0.8))),
                               TextFormField(
                                 controller: _nomeController,
                                 decoration: const InputDecoration(
@@ -80,7 +81,8 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Nome Civil'),
+                              Text('Nome Civil', style: TextStyle(
+                                    color: Colors.black.withOpacity(0.8))),
                               TextFormField(
                                 controller: _nomeCivilController,
                                 decoration: const InputDecoration(
@@ -101,7 +103,8 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Universo'),
+                              Text('Universo', style: TextStyle(
+                                    color: Colors.black.withOpacity(0.8))),
                               ListTile(
                                 title: const Text('Marvel'),
                                 leading: Radio(
