@@ -41,7 +41,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
                             Text(widget.heroi.nome,
-                                style: Theme.of(context).textTheme.title)
+                                style: Theme.of(context).textTheme.headline6)
                           ],
                         ),
                       ),
@@ -53,7 +53,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
                             Text(widget.heroi.nomeCivil,
-                                style: Theme.of(context).textTheme.title)
+                                style: Theme.of(context).textTheme.headline6)
                           ],
                         ),
                       ),
@@ -65,7 +65,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
                             Text(widget.heroi.universo,
-                                style: Theme.of(context).textTheme.title)
+                                style: Theme.of(context).textTheme.headline6)
                           ],
                         ),
                       ),

@@ -36,7 +36,7 @@ class _HeroiPageState extends State<HeroiPage> {
                 ? new HeroiList(herois: heroiList)
                 : new Center(
                     child: new Text('No data found, tap plus button to add!',
-                        style: Theme.of(context).textTheme.title));
+                        style: Theme.of(context).textTheme.headline6));
           },
         )),
       ),
@@ -60,11 +60,10 @@ class _HeroiPageState extends State<HeroiPage> {
     return futureHerois;
   }
 
-  _navigateToAddHeroi (BuildContext context) async {
+  _navigateToAddHeroi(BuildContext context) async {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HeroiAdd()),
     );
   }
-  
 }
