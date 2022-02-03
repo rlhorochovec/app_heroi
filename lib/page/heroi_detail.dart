@@ -122,7 +122,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
             FlatButton(
               child: Text('Sim'),
               onPressed: () {
-                api.deleteHeroi(widget.heroi.id);
+                api.del(widget.heroi.id);
                 Navigator.popUntil(
                     context, ModalRoute.withName(Navigator.defaultRouteName));
               },

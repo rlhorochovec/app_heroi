@@ -59,8 +59,9 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Nome', style: TextStyle(
-                                    color: Colors.black.withOpacity(0.8))),
+                              Text('Nome',
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.8))),
                               TextFormField(
                                 controller: _nomeController,
                                 decoration: const InputDecoration(
@@ -81,8 +82,9 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Nome Civil', style: TextStyle(
-                                    color: Colors.black.withOpacity(0.8))),
+                              Text('Nome Civil',
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.8))),
                               TextFormField(
                                 controller: _nomeCivilController,
                                 decoration: const InputDecoration(
@@ -103,8 +105,9 @@ class _HeroiEditState extends State<HeroiEdit> {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                             children: <Widget>[
-                              Text('Universo', style: TextStyle(
-                                    color: Colors.black.withOpacity(0.8))),
+                              Text('Universo',
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.8))),
                               ListTile(
                                 title: const Text('Marvel'),
                                 leading: Radio(
@@ -143,7 +146,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                                 onPressed: () {
                                   if (_addKey.currentState.validate()) {
                                     _addKey.currentState.save();
-                                    api.updateHeroi(
+                                    api.update(
                                         id,
                                         HeroiModel(
                                             nome: _nomeController.text,

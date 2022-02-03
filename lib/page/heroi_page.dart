@@ -51,7 +51,7 @@ class _HeroiPageState extends State<HeroiPage> {
   }
 
   Future loadList() {
-    Future<List<HeroiModel>> futureHerois = api.getHerois();
+    Future<List<HeroiModel>> futureHerois = api.read();
     futureHerois.then((heroiList) {
       setState(() {
         this.heroiList = heroiList;

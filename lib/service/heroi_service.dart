@@ -6,8 +6,8 @@ import 'package:http/http.dart';
 class HeroiService {
   final String apiUrl = "https://heroi-api.herokuapp.com/api/herois";
 
-  Future<List<HeroiModel>> getHerois() async {
-    Response res = await get(Uri.parse('$apiUrl/all'));
+  Future<List<HeroiModel>> read() async {
+    Response res = await get(Uri.parse('$apiUrl/lista'));
 
     if (res.statusCode == 200) {
       String source = Utf8Decoder().convert(res.bodyBytes);
@@ -20,7 +20,7 @@ class HeroiService {
     }
   }
 
-  Future<HeroiModel> getHeroiById(String id) async {
+  Future<HeroiModel> getById(String id) async {
     final res = await get(Uri.parse('$apiUrl/$id'));
 
     if (res.statusCode == 200) {
@@ -31,7 +31,7 @@ class HeroiService {
     }
   }
 
-  Future<HeroiModel> createHeroi(HeroiModel heroi) async {
+  Future<HeroiModel> create(HeroiModel heroi) async {
     Map data = {
       'nome': heroi.nome,
       'nomeCivil': heroi.nomeCivil,
@@ -53,7 +53,7 @@ class HeroiService {
     }
   }
 
-  Future<HeroiModel> updateHeroi(String id, HeroiModel heroi) async {
+  Future<HeroiModel> update(String id, HeroiModel heroi) async {
     Map data = {
       'nome': heroi.nome,
       'nomeCivil': heroi.nomeCivil,
@@ -75,7 +75,7 @@ class HeroiService {
     }
   }
 
-  Future<void> deleteHeroi(String id) async {
+  Future<void> del(String id) async {
     Response res = await delete(Uri.parse('$apiUrl/$id'));
 
     if (res.statusCode == 200) {
