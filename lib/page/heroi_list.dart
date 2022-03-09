@@ -13,21 +13,29 @@ class HeroiList extends StatelessWidget {
         itemCount: herois == null ? 0 : herois.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
+              margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HeroiDetail(herois[index])),
-              );
-            },
-            child: ListTile(
-              leading: Icon(Icons.person),
-              title: Text(herois[index].nome),
-              subtitle: Text(herois[index].nomeCivil),
-              trailing: Icon(Icons.keyboard_arrow_right),
-            ),
-          ));
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HeroiDetail(herois[index])),
+                  );
+                },
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/' +
+                        herois[index]
+                            .nome
+                            .toLowerCase()
+                            .replaceAll(RegExp(' '), '-') +
+                        '.jpg'),
+                  ),
+                  title: Text(herois[index].nome),
+                  subtitle: Text(herois[index].nomeCivil),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
+              ));
         });
   }
 }

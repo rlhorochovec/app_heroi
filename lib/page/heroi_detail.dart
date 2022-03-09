@@ -37,6 +37,23 @@ class _HeroiDetailState extends State<HeroiDetail> {
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: Column(
                           children: <Widget>[
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+                              child: CircleAvatar(
+                                  radius: 81,
+                                  backgroundColor: Colors.white,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.grey,
+                                    backgroundImage: AssetImage(
+                                        'assets/images/' +
+                                            widget.heroi.nome
+                                                .toLowerCase()
+                                                .replaceAll(RegExp(' '), '-') +
+                                            '.jpg'),
+                                    radius: 80,
+                                  )),
+                            ),
                             Text('Nome:',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
@@ -86,7 +103,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                 _confirmDialog();
                               },
                               child: Text('Excluir'),
-                            )
+                            ),
                           ],
                         ),
                       ),

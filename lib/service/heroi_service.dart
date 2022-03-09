@@ -45,7 +45,7 @@ class HeroiService {
       },
       body: jsonEncode(data),
     );
-    if (res.statusCode == 200) {
+    if (res.statusCode == 201) {
       String source = Utf8Decoder().convert(res.bodyBytes);
       return HeroiModel.fromJson(json.decode(source));
     } else {
