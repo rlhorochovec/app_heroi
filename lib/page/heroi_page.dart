@@ -1,7 +1,6 @@
 import 'package:app_heroi/model/heroi_model.dart';
 import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'heroi_list.dart';
@@ -35,7 +34,7 @@ class _HeroiPageState extends State<HeroiPage> {
             return heroiList.length > 0
                 ? new HeroiList(herois: heroiList)
                 : new Center(
-                    child: new Text('No data found, tap plus button to add!',
+                    child: new Text('Não há registros a serem exibidos!',
                         style: Theme.of(context).textTheme.headline6));
           },
         )),
