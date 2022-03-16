@@ -26,13 +26,13 @@ class HeroiList extends StatelessWidget {
                   leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/' +
                         herois[index]
-                            .nome
+                            .name
                             .toLowerCase()
                             .replaceAll(RegExp(' '), '-') +
                         '.jpg'),
                   ),
-                  title: Text(herois[index].nome),
-                  subtitle: Text(herois[index].nomeCivil),
+                  title: Text(herois[index].name),
+                  subtitle: Text(herois[index].civil),
                   trailing: Icon(Icons.keyboard_arrow_right),
                 ),
               ));

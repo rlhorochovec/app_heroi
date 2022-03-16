@@ -1,24 +1,24 @@
 class HeroiModel {
   String id;
-  String nome;
-  String nomeCivil;
-  String universo;
+  String name;
+  String civil;
+  String universe;
 
-  HeroiModel({this.id, this.nome, this.nomeCivil, this.universo});
+  HeroiModel({this.id, this.name, this.civil, this.universe});
 
   HeroiModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    nome = json['nome'];
-    nomeCivil = json['nomeCivil'];
-    universo = json['universo'];
+    name = json['name'];
+    civil = json['civil'];
+    universe = json['universe'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['nome'] = this.nome;
-    data['nomeCivil'] = this.nomeCivil;
-    data['universo'] = this.universo;
+    data['name'] = this.name;
+    data['civil'] = this.civil;
+    data['universe'] = this.universe;
     return data;
   }
 }

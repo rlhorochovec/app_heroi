@@ -19,21 +19,21 @@ class _HeroiEditState extends State<HeroiEdit> {
   final HeroiService api = HeroiService();
   final _addKey = GlobalKey<FormState>();
   String id = '';
-  final _nomeController = TextEditingController();
-  final _nomeCivilController = TextEditingController();
-  String universo = 'Marvel';
-  Universo _universo = Universo.Marvel;
+  final _nameController = TextEditingController();
+  final _civilController = TextEditingController();
+  String universe = 'Marvel';
+  Universo _universe = Universo.Marvel;
 
   @override
   void initState() {
     id = widget.herois.id;
-    _nomeController.text = widget.herois.nome;
-    _nomeCivilController.text = widget.herois.nomeCivil;
-    universo = widget.herois.universo;
-    if (widget.herois.universo == 'Marvel') {
-      _universo = Universo.Marvel;
+    _nameController.text = widget.herois.name;
+    _civilController.text = widget.herois.civil;
+    universe = widget.herois.universe;
+    if (widget.herois.universe == 'Marvel') {
+      _universe = Universo.Marvel;
     } else {
-      _universo = Universo.DC;
+      _universe = Universo.DC;
     }
     super.initState();
   }
@@ -63,7 +63,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                                   style: TextStyle(
                                       color: Colors.black.withOpacity(0.8))),
                               TextFormField(
-                                controller: _nomeController,
+                                controller: _nameController,
                                 decoration: const InputDecoration(
                                   hintText: 'Nome',
                                 ),
@@ -86,7 +86,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                                   style: TextStyle(
                                       color: Colors.black.withOpacity(0.8))),
                               TextFormField(
-                                controller: _nomeCivilController,
+                                controller: _civilController,
                                 decoration: const InputDecoration(
                                   hintText: 'Nome Civil',
                                 ),
@@ -112,11 +112,11 @@ class _HeroiEditState extends State<HeroiEdit> {
                                 title: const Text('Marvel'),
                                 leading: Radio(
                                   value: Universo.Marvel,
-                                  groupValue: _universo,
+                                  groupValue: _universe,
                                   onChanged: (Universo value) {
                                     setState(() {
-                                      _universo = value;
-                                      universo = 'Marvel';
+                                      _universe = value;
+                                      universe = 'Marvel';
                                     });
                                   },
                                 ),
@@ -125,11 +125,11 @@ class _HeroiEditState extends State<HeroiEdit> {
                                 title: const Text('DC'),
                                 leading: Radio(
                                   value: Universo.DC,
-                                  groupValue: _universo,
+                                  groupValue: _universe,
                                   onChanged: (Universo value) {
                                     setState(() {
-                                      _universo = value;
-                                      universo = 'DC';
+                                      _universe = value;
+                                      universe = 'DC';
                                     });
                                   },
                                 ),
@@ -149,10 +149,9 @@ class _HeroiEditState extends State<HeroiEdit> {
                                     api.update(
                                         id,
                                         HeroiModel(
-                                            nome: _nomeController.text,
-                                            nomeCivil:
-                                                _nomeCivilController.text,
-                                            universo: universo));
+                                            name: _nameController.text,
+                                            civil: _civilController.text,
+                                            universe: universe));
                                     Navigator.popUntil(
                                         context,
                                         ModalRoute.withName(
