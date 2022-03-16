@@ -42,12 +42,12 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                   const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
                               child: CircleAvatar(
                                   radius: 81,
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: Colors.black,
                                   child: CircleAvatar(
                                     backgroundColor: Colors.grey,
                                     backgroundImage: AssetImage(
                                         'assets/images/' +
-                                            widget.heroi.nome
+                                            widget.heroi.name
                                                 .toLowerCase()
                                                 .replaceAll(RegExp(' '), '-') +
                                             '.jpg'),
@@ -57,7 +57,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                             Text('Nome:',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
-                            Text(widget.heroi.nome,
+                            Text(widget.heroi.name,
                                 style: Theme.of(context).textTheme.headline6)
                           ],
                         ),
@@ -69,7 +69,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                             Text('Nome Civil:',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
-                            Text(widget.heroi.nomeCivil,
+                            Text(widget.heroi.civil,
                                 style: Theme.of(context).textTheme.headline6)
                           ],
                         ),
@@ -81,7 +81,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                             Text('Universo:',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8))),
-                            Text(widget.heroi.universo,
+                            Text(widget.heroi.universe,
                                 style: Theme.of(context).textTheme.headline6)
                           ],
                         ),

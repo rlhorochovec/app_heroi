@@ -4,10 +4,10 @@ import 'package:app_heroi/model/heroi_model.dart';
 import 'package:http/http.dart';
 
 class HeroiService {
-  final String apiUrl = "https://heroi-api.herokuapp.com/api/herois";
+  final String apiUrl = "https://heroi-api.herokuapp.com/api/heroes";
 
   Future<List<HeroiModel>> read() async {
-    Response res = await get(Uri.parse('$apiUrl/lista'));
+    Response res = await get(Uri.parse('$apiUrl/list'));
 
     if (res.statusCode == 200) {
       String source = Utf8Decoder().convert(res.bodyBytes);
@@ -33,9 +33,9 @@ class HeroiService {
 
   Future<HeroiModel> create(HeroiModel heroi) async {
     Map data = {
-      'nome': heroi.nome,
-      'nomeCivil': heroi.nomeCivil,
-      'universo': heroi.universo
+      'name': heroi.name,
+      'civil': heroi.civil,
+      'universe': heroi.universe
     };
 
     final Response res = await post(
@@ -55,9 +55,9 @@ class HeroiService {
 
   Future<HeroiModel> update(String id, HeroiModel heroi) async {
     Map data = {
-      'nome': heroi.nome,
-      'nomeCivil': heroi.nomeCivil,
-      'universo': heroi.universo
+      'name': heroi.name,
+      'civil': heroi.civil,
+      'universe': heroi.universe
     };
 
     final Response res = await put(

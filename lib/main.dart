@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Super Heróis',
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        brightness: Brightness.dark,
+        // brightness: Brightness.dark,
       ),
       home: HeroiPage(),
     );
