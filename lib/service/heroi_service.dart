@@ -4,7 +4,7 @@ import 'package:app_heroi/model/heroi_model.dart';
 import 'package:http/http.dart';
 
 class HeroiService {
-  final String apiUrl = "https://heroi-api.herokuapp.com/api/heroes";
+  static String apiUrl = "https://heroi-api.herokuapp.com/api/heroes";
 
   Future<List<HeroiModel>> read() async {
     Response res = await get(Uri.parse('$apiUrl/list'));

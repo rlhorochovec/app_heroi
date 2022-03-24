@@ -1,43 +1,117 @@
-import 'package:app_heroi/model/heroi_model.dart';
-import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-import 'heroi_list.dart';
+import '../model/heroi_model.dart';
+import 'heroi_add.dart';
+import 'heroi_detail.dart';
 
 class HeroiPage extends StatefulWidget {
-  HeroiPage({Key key, this.title}) : super(key: key);
-  final String title;
+  HeroiPage() : super();
 
   @override
   _HeroiPageState createState() => _HeroiPageState();
 }
 
+class Debouncer {
+  final int milliseconds;
+  VoidCallback action;
+  Timer _timer;
+
+  Debouncer({this.milliseconds});
+
+  run(VoidCallback action) {
+    if (null != _timer) {
+      _timer.cancel();
+    }
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
+  }
+}
+
 class _HeroiPageState extends State<HeroiPage> {
+  final _debouncer = Debouncer(milliseconds: 500);
   final HeroiService api = HeroiService();
-  List<HeroiModel> heroiList;
+  List<HeroiModel> listaHerois;
+  List<HeroiModel> filtraHerois;
+
+  @override
+  void initState() {
+    super.initState();
+    api.read().then((herois) {
+      setState(() {
+        listaHerois = herois;
+        filtraHerois = listaHerois;
+      });
+    });
+  }
+
+  _navigateToAddHeroi(BuildContext context) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HeroiAdd()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (heroiList == null) {
-      heroiList = List<HeroiModel>();
-    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Heróis'),
+        title: Text('Super Heróis'),
       ),
-      body: new Container(
-        child: new Center(
-            child: new FutureBuilder(
-          future: loadList(),
-          builder: (context, snapshot) {
-            return heroiList.length > 0
-                ? new HeroiList(herois: heroiList)
-                : new Center(
-                    child: new Text('Não há registros a serem exibidos!',
-                        style: Theme.of(context).textTheme.headline6));
-          },
-        )),
+      body: Column(
+        children: <Widget>[
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10.0),
+              hintText: 'Pesquisar por nome ou nome civil',
+            ),
+            onChanged: (string) {
+              _debouncer.run(() {
+                setState(() {
+                  filtraHerois = listaHerois
+                      .where((u) => (u.name
+                              .toLowerCase()
+                              .contains(string.toLowerCase()) ||
+                          u.civil.toLowerCase().contains(string.toLowerCase())))
+                      .toList();
+                });
+              });
+            },
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.all(10.0),
+              itemCount: filtraHerois == null ? 0 : filtraHerois.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                HeroiDetail(filtraHerois[index])),
+                      );
+                    },
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/' +
+                            filtraHerois[index]
+                                .name
+                                .toLowerCase()
+                                .replaceAll(RegExp(' '), '-') +
+                            '.jpg'),
+                      ),
+                      title: Text(filtraHerois[index].name),
+                      subtitle: Text(filtraHerois[index].civil),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -46,23 +120,6 @@ class _HeroiPageState extends State<HeroiPage> {
         tooltip: 'Novo',
         child: Icon(Icons.add),
       ),
-    );
-  }
-
-  Future loadList() {
-    Future<List<HeroiModel>> futureHerois = api.read();
-    futureHerois.then((heroiList) {
-      setState(() {
-        this.heroiList = heroiList;
-      });
-    });
-    return futureHerois;
-  }
-
-  _navigateToAddHeroi(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HeroiAdd()),
     );
   }
 }
