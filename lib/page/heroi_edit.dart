@@ -48,124 +48,120 @@ class _HeroiEditState extends State<HeroiEdit> {
         key: _addKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20.0),
-            child: Card(
-                child: Container(
-                    padding: EdgeInsets.all(10.0),
-                    width: 440,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: Column(
-                            children: <Widget>[
-                              Text('Nome',
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.8))),
-                              TextFormField(
-                                controller: _nameController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Nome',
-                                ),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Insira seu nome';
-                                  }
-                                  return null;
+              padding: EdgeInsets.all(20.0),
+              child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  width: 440,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              controller: _nameController,
+                              decoration: const InputDecoration(
+                                // icon: Icon(Icons.person),
+                                hintText: 'Como as pessoas te chamam?',
+                                labelText: 'Nome *',
+                              ),
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Insira seu nome';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {},
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              controller: _civilController,
+                              decoration: const InputDecoration(
+                                // icon: Icon(Icons.person),
+                                hintText: 'Qual seu nome de registro?',
+                                labelText: 'Nome civil',
+                              ),
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Insira seu nome civil';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {},
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Column(
+                          children: <Widget>[
+                            Text('Universo',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.8))),
+                            ListTile(
+                              title: const Text('Marvel'),
+                              leading: Radio(
+                                value: Universo.Marvel,
+                                groupValue: _universe,
+                                onChanged: (Universo value) {
+                                  setState(() {
+                                    _universe = value;
+                                    universe = 'Marvel';
+                                  });
                                 },
-                                onChanged: (value) {},
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: Column(
-                            children: <Widget>[
-                              Text('Nome Civil',
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.8))),
-                              TextFormField(
-                                controller: _civilController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Nome Civil',
-                                ),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Insira seu nome civil';
-                                  }
-                                  return null;
+                            ),
+                            ListTile(
+                              title: const Text('DC'),
+                              leading: Radio(
+                                value: Universo.DC,
+                                groupValue: _universe,
+                                onChanged: (Universo value) {
+                                  setState(() {
+                                    _universe = value;
+                                    universe = 'DC';
+                                  });
                                 },
-                                onChanged: (value) {},
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: Column(
-                            children: <Widget>[
-                              Text('Universo',
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.8))),
-                              ListTile(
-                                title: const Text('Marvel'),
-                                leading: Radio(
-                                  value: Universo.Marvel,
-                                  groupValue: _universe,
-                                  onChanged: (Universo value) {
-                                    setState(() {
-                                      _universe = value;
-                                      universe = 'Marvel';
-                                    });
-                                  },
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('DC'),
-                                leading: Radio(
-                                  value: Universo.DC,
-                                  groupValue: _universe,
-                                  onChanged: (Universo value) {
-                                    setState(() {
-                                      _universe = value;
-                                      universe = 'DC';
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Column(
+                          children: <Widget>[
+                            RaisedButton(
+                              splashColor: Colors.red,
+                              onPressed: () {
+                                if (_addKey.currentState.validate()) {
+                                  _addKey.currentState.save();
+                                  api.update(
+                                      id,
+                                      HeroiModel(
+                                          name: _nameController.text,
+                                          civil: _civilController.text,
+                                          universe: universe));
+                                  Navigator.popUntil(
+                                      context,
+                                      ModalRoute.withName(
+                                          Navigator.defaultRouteName));
+                                }
+                              },
+                              child: Text('Salvar'),
+                            )
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: Column(
-                            children: <Widget>[
-                              RaisedButton(
-                                splashColor: Colors.red,
-                                onPressed: () {
-                                  if (_addKey.currentState.validate()) {
-                                    _addKey.currentState.save();
-                                    api.update(
-                                        id,
-                                        HeroiModel(
-                                            name: _nameController.text,
-                                            civil: _civilController.text,
-                                            universe: universe));
-                                    Navigator.popUntil(
-                                        context,
-                                        ModalRoute.withName(
-                                            Navigator.defaultRouteName));
-                                  }
-                                },
-                                child: Text('Salvar'),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ))),
-          ),
+                      ),
+                    ],
+                  ))),
         ),
       ),
     );
