@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Marvel | DC Heróis',
+      title: 'Heróis',
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         brightness: Brightness.dark,
