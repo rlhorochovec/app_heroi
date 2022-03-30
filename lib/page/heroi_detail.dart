@@ -46,17 +46,11 @@ class _HeroiDetailState extends State<HeroiDetail> {
               return [
                 PopupMenuItem<int>(
                   value: 0,
-                  child: ListTile(
-                    leading: Icon(Icons.edit), // your icon
-                    title: Text("Editar"),
-                  ),
+                  child: Text("Editar"),
                 ),
                 PopupMenuItem<int>(
                   value: 1,
-                  child: ListTile(
-                    leading: Icon(Icons.delete), // your icon
-                    title: Text("Excluir"),
-                  ),
+                  child: Text("Excluir"),
                 ),
               ];
             },
