@@ -13,7 +13,7 @@ class HeroiList extends StatelessWidget {
         itemCount: herois == null ? 0 : herois.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
-              color: Colors.grey.withOpacity(0.1),
+              color: Colors.grey.withOpacity(0.2),
               margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: InkWell(
                 onTap: () {

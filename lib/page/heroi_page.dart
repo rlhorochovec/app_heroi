@@ -24,7 +24,7 @@ class _HeroiPageState extends State<HeroiPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Marvel | DC Heróis'),
+        title: Text('Heróis'),
       ),
       body: new Container(
         color: Colors.black,
