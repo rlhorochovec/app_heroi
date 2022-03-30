@@ -85,7 +85,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                               decoration: const InputDecoration(
                                 // icon: Icon(Icons.person),
                                 hintText: 'Qual seu nome de registro?',
-                                labelText: 'Nome civil',
+                                labelText: 'Nome civil *',
                               ),
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -100,39 +100,32 @@ class _HeroiEditState extends State<HeroiEdit> {
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Column(
-                          children: <Widget>[
-                            Text('Universo',
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.8))),
-                            ListTile(
-                              title: const Text('Marvel'),
-                              leading: Radio(
-                                value: Universo.Marvel,
-                                groupValue: _universe,
-                                onChanged: (Universo value) {
-                                  setState(() {
-                                    _universe = value;
-                                    universe = 'Marvel';
-                                  });
-                                },
-                              ),
-                            ),
-                            ListTile(
-                              title: const Text('DC'),
-                              leading: Radio(
-                                value: Universo.DC,
-                                groupValue: _universe,
-                                onChanged: (Universo value) {
-                                  setState(() {
-                                    _universe = value;
-                                    universe = 'DC';
-                                  });
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: Column(children: [
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Radio(
+                                    value: Universo.Marvel,
+                                    groupValue: _universe,
+                                    onChanged: (Universo value) {
+                                      setState(() {
+                                        _universe = value;
+                                        universe = 'Marvel';
+                                      });
+                                    }),
+                                Text('Marvel'),
+                              ]),
+                          Radio(
+                              value: Universo.DC,
+                              groupValue: _universe,
+                              onChanged: (Universo value) {
+                                setState(() {
+                                  _universe = value;
+                                  universe = 'DC';
+                                });
+                              }),
+                          Text('DC'),
+                        ]),
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
