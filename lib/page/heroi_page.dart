@@ -3,6 +3,7 @@ import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
+import '../drawer.dart';
 import 'heroi_list.dart';
 
 class HeroiPage extends StatefulWidget {
@@ -26,6 +27,9 @@ class _HeroiPageState extends State<HeroiPage> {
       appBar: AppBar(
         title: Text('Heróis'),
       ),
+      drawer: Drawer(
+        child: MainDrawer(),
+      ),
       body: new Container(
         color: Colors.black,
         child: new Center(
@@ -40,13 +44,6 @@ class _HeroiPageState extends State<HeroiPage> {
           },
         )),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _navigateToAddHeroi(context);
-        },
-        tooltip: 'Novo',
-        child: Icon(Icons.add),
-      ),
     );
   }
 
@@ -58,12 +55,5 @@ class _HeroiPageState extends State<HeroiPage> {
       });
     });
     return futureHerois;
-  }
-
-  _navigateToAddHeroi(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HeroiAdd()),
-    );
   }
 }
