@@ -1,5 +1,4 @@
 import 'package:app_heroi/model/heroi_model.dart';
-import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +24,7 @@ class _HeroiPageState extends State<HeroiPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Heróis'),
+        title: Text('Super Heróis'),
       ),
       drawer: Drawer(
         child: MainDrawer(),

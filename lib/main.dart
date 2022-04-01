@@ -1,7 +1,5 @@
-import 'package:app_heroi/drawer.dart';
+import 'package:app_heroi/splash.dart';
 import 'package:flutter/material.dart';
-
-import 'page/heroi_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,15 +11,14 @@ class MyApp extends StatelessWidget {
     primaryColor: Colors.black,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.dark,
-    fontFamily: 'Roboto',
   );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Heróis',
+      title: 'Super Heróis',
       theme: _darkTheme,
-      home: HeroiPage(),
+      home: Splash(),
     );
   }
 }

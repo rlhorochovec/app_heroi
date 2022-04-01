@@ -1,16 +1,11 @@
+import 'package:app_heroi/page/heroi_about.dart';
 import 'package:flutter/material.dart';
 
 import 'page/heroi_add.dart';
+import 'page/heroi_page.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key key}) : super(key: key);
-
-  _navigateToAddHeroi(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HeroiAdd()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +18,17 @@ class MainDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 51.0,
+                radius: 61.0,
                 backgroundColor: Colors.grey,
                 child: CircleAvatar(
-                  radius: 50.0,
+                  radius: 60.0,
                   backgroundImage: AssetImage(
                     "assets/images/xovec.jpg",
                   ),
                 ),
               ),
               SizedBox(
-                height: 5.0,
+                height: 10.0,
               ),
               Text(
                 "Rafael Horochovec",
@@ -63,13 +58,42 @@ class MainDrawer extends StatelessWidget {
       //and let's copy that and modify it
       ListTile(
         onTap: () {
-          _navigateToAddHeroi(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HeroiPage()),
+          );
         },
         leading: Icon(
-          Icons.add,
+          Icons.groups,
+          color: Colors.black,
+        ),
+        title: Text("Super Heróis"),
+      ),
+      ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HeroiAdd()),
+          );
+        },
+        leading: Icon(
+          Icons.person_add,
           color: Colors.black,
         ),
         title: Text("Adicionar"),
+      ),
+      ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HeroiAbout()),
+          );
+        },
+        leading: Icon(
+          Icons.info,
+          color: Colors.black,
+        ),
+        title: Text("Sobre"),
       ),
     ]);
   }
