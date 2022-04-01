@@ -35,7 +35,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
               //print(selectedValue);
               switch (selectedValue) {
                 case 0:
-                  _navigateToEditHeroi(context, widget.heroi);
+                  _edit(context, widget.heroi);
                   break;
                 case 1:
                   _confirmDialog();
@@ -123,8 +123,8 @@ class _HeroiDetailState extends State<HeroiDetail> {
         ]));
   }
 
-  _navigateToEditHeroi(BuildContext context, HeroiModel heroi) async {
-    final result = await Navigator.push(
+  _edit(BuildContext context, HeroiModel heroi) async {
+    Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HeroiEdit(heroi)),
     );
