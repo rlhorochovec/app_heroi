@@ -5,6 +5,7 @@ import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
 import 'heroi_edit.dart';
+import 'heroi_page.dart';
 
 class HeroiDetail extends StatefulWidget {
   HeroiDetail(this.heroi);
@@ -149,8 +150,8 @@ class _HeroiDetailState extends State<HeroiDetail> {
                   child: Text('Sim'),
                   onPressed: () {
                     api.del(widget.heroi.id);
-                    Navigator.popUntil(context,
-                        ModalRoute.withName(Navigator.defaultRouteName));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HeroiPage()));
                   },
                 ),
                 FlatButton(
