@@ -1,4 +1,5 @@
 import 'package:app_heroi/model/heroi_model.dart';
+import 'package:app_heroi/page/heroi_page.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
@@ -138,10 +139,10 @@ class _HeroiEditState extends State<HeroiEdit> {
                                         name: _nameController.text,
                                         civil: _civilController.text,
                                         universe: universe));
-                                Navigator.popUntil(
+                                Navigator.push(
                                     context,
-                                    ModalRoute.withName(
-                                        Navigator.defaultRouteName));
+                                    MaterialPageRoute(
+                                        builder: (context) => HeroiPage()));
                               }
                             },
                             child: Text('Salvar'),

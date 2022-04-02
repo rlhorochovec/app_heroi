@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   // Dark theme of your app
   final ThemeData _darkTheme = ThemeData(
     primaryColor: Colors.black,
+    primarySwatch: Colors.grey,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.dark,
   );

@@ -38,7 +38,7 @@ class _HeroiPageState extends State<HeroiPage> {
             return heroiList.length > 0
                 ? new HeroiList(herois: heroiList)
                 : new Center(
-                    child: new Text('Não há registros a serem exibidos.',
+                    child: new Text('Carregando registros.',
                         style: Theme.of(context).textTheme.headline6));
           },
         )),

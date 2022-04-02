@@ -1,4 +1,5 @@
 import 'package:app_heroi/page/heroi_about.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'page/heroi_add.dart';
@@ -45,6 +46,7 @@ class MainDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.w400,
+                  color: Colors.grey,
                 ),
               ),
             ],
@@ -64,10 +66,10 @@ class MainDrawer extends StatelessWidget {
           );
         },
         leading: Icon(
-          Icons.groups,
+          Icons.groups_sharp,
           color: Colors.black,
         ),
-        title: Text("Super Heróis"),
+        title: Text("Heróis"),
       ),
       ListTile(
         onTap: () {
@@ -81,6 +83,9 @@ class MainDrawer extends StatelessWidget {
           color: Colors.black,
         ),
         title: Text("Adicionar"),
+      ),
+      Divider(
+        color: Colors.black,
       ),
       ListTile(
         onTap: () {

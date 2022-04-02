@@ -16,7 +16,7 @@ class _SplashState extends State<Splash> {
     return Stack(
       children: <Widget>[
         SplashScreen(
-          seconds: 5,
+          seconds: 3,
           gradientBackground: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -34,7 +34,7 @@ class _SplashState extends State<Splash> {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              scale: 1.5,
+              scale: 3.0,
               image: AssetImage(
                 'assets/images/splash.png',
               ),
