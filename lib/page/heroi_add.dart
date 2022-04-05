@@ -26,7 +26,7 @@ class _HeroiAddState extends State<HeroiAdd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Novo Herói'),
+        title: Text('Adicionar Herói'),
       ),
       body: Form(
         key: _addKey,

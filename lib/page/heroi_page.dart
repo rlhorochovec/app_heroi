@@ -24,22 +24,20 @@ class _HeroiPageState extends State<HeroiPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Super Heróis'),
+        title: Text('Heróis'),
       ),
       drawer: Drawer(
         child: MainDrawer(),
       ),
       body: new Container(
-        color: Colors.black,
+        //color: Colors.black,
         child: new Center(
             child: new FutureBuilder(
           future: loadList(),
           builder: (context, snapshot) {
             return heroiList.length > 0
                 ? new HeroiList(herois: heroiList)
-                : new Center(
-                    child: new Text('Carregando registros.',
-                        style: Theme.of(context).textTheme.headline6));
+                : new Center(child: new CircularProgressIndicator());
           },
         )),
       ),
