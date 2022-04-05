@@ -12,13 +12,14 @@ class MyApp extends StatelessWidget {
     primarySwatch: Colors.grey,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.dark,
+    fontFamily: 'Roboto',
   );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Super Heróis',
-      theme: _darkTheme,
+      title: 'Heróis',
+      //theme: _darkTheme,
       home: Splash(),
     );
   }
