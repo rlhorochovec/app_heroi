@@ -24,7 +24,7 @@ class _HeroiPageState extends State<HeroiPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Heróis'),
       ),
       drawer: Drawer(
         child: MainDrawer(),

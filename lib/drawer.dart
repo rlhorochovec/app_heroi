@@ -24,7 +24,7 @@ class MainDrawer extends StatelessWidget {
           ),
           new ListTile(
             leading: Icon(
-              Icons.people,
+              Icons.emoji_people,
             ),
             title: Text('Heróis'),
             onTap: () {
@@ -34,7 +34,7 @@ class MainDrawer extends StatelessWidget {
           ),
           new ListTile(
             leading: Icon(
-              Icons.add,
+              Icons.person_add,
             ),
             title: Text('Adicionar'),
             onTap: () {

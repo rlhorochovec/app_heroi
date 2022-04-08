@@ -11,9 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Heróis',
       theme: ThemeData(
-        primaryColor: Colors.black,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         fontFamily: 'Roboto',
       ),
       home: Splash(),
