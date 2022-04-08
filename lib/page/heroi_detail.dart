@@ -70,7 +70,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                   sigmaY: 10.0,
                 ),
                 child: Container(
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.black.withOpacity(0.7),
                 ),
               ),
             ),
