@@ -59,7 +59,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                           TextFormField(
                             controller: _nameController,
                             decoration: const InputDecoration(
-                              // icon: Icon(Icons.person),
+                              icon: Icon(Icons.emoji_people),
                               hintText: 'Como as pessoas te chamam?',
                               labelText: 'Nome *',
                             ),
@@ -81,7 +81,7 @@ class _HeroiEditState extends State<HeroiEdit> {
                           TextFormField(
                             controller: _civilController,
                             decoration: const InputDecoration(
-                              // icon: Icon(Icons.person),
+                              icon: Icon(Icons.person),
                               hintText: 'Qual seu nome de registro?',
                               labelText: 'Nome civil *',
                             ),
