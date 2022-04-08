@@ -17,7 +17,6 @@ class _SplashState extends State<Splash> {
       children: <Widget>[
         SplashScreen(
           seconds: 3,
-          /*
           gradientBackground: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -29,7 +28,6 @@ class _SplashState extends State<Splash> {
             ],
             stops: [0.1, 0.4, 0.7, 0.9],
           ),
-          */
           navigateAfterSeconds: HeroiPage(),
           loaderColor: Colors.transparent,
         ),

@@ -2,20 +2,6 @@
 
 A new Flutter project.
 
-## Screenshots
-<img src="/screenshots/Screenshot_1649193177.png" style="width:190px" /> <img src="/screenshots/Screenshot_1649193183.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193368.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193385.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193392.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193405.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193423.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193443.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193448.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193453.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193457.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193464.png" style="width:190px" />
-<img src="/screenshots/Screenshot_1649193473.png" style="width:190px" />
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
