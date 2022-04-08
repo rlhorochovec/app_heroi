@@ -24,13 +24,12 @@ class _HeroiPageState extends State<HeroiPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Heróis'),
+        title: Text(widget.title),
       ),
       drawer: Drawer(
         child: MainDrawer(),
       ),
       body: new Container(
-        //color: Colors.black,
         child: new Center(
             child: new FutureBuilder(
           future: loadList(),

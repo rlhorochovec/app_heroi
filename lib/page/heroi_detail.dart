@@ -31,9 +31,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                 Radius.circular(5.0),
               ),
             ),
-            // color: Colors.black,
             onSelected: (selectedValue) {
-              //print(selectedValue);
               switch (selectedValue) {
                 case 0:
                   _edit(context, widget.heroi);
@@ -71,9 +69,6 @@ class _HeroiDetailState extends State<HeroiDetail> {
                   sigmaX: 10.0,
                   sigmaY: 10.0,
                 ),
-                child: Container(
-                    // color: Colors.black.withOpacity(0.7),
-                    ),
               ),
             ),
           ),
@@ -105,7 +100,6 @@ class _HeroiDetailState extends State<HeroiDetail> {
                   child: Text(
                     widget.heroi.civil,
                     style: TextStyle(
-                      color: Colors.white,
                       fontSize: 15.0,
                     ),
                   ),

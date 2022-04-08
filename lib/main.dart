@@ -6,20 +6,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // Dark theme of your app
-  final ThemeData _darkTheme = ThemeData(
-    primaryColor: Colors.black,
-    primarySwatch: Colors.grey,
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-    brightness: Brightness.dark,
-    fontFamily: 'Roboto',
-  );
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Heróis',
-      //theme: _darkTheme,
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.light,
+        fontFamily: 'Roboto',
+      ),
       home: Splash(),
     );
   }
