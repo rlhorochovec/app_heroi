@@ -18,18 +18,17 @@ class MainDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.grey,
                 radius: 61.0,
                 child: CircleAvatar(
                   backgroundImage: AssetImage(
                     "assets/images/xovec.jpg",
                   ),
-                  backgroundColor: Colors.grey,
                   radius: 60.0,
                 ),
               ),
               SizedBox(
-                height: 5.0,
+                height: 10.0,
               ),
               Text(
                 "Rafael Horochovec",
