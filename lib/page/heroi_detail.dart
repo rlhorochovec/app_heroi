@@ -70,7 +70,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                   sigmaY: 10.0,
                 ),
                 child: Container(
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.grey.withOpacity(0.5),
                 ),
               ),
             ),
@@ -81,7 +81,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                 Padding(
                     padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 30.0),
                     child: CircleAvatar(
-                      radius: 81,
+                      radius: 85,
                       backgroundColor: Colors.white,
                       child: CircleAvatar(
                         backgroundImage: AssetImage('assets/images/' +
@@ -89,7 +89,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
                                 .toLowerCase()
                                 .replaceAll(RegExp(' '), '-') +
                             '.jpg'),
-                        radius: 80,
+                        radius: 84,
                       ),
                     )),
                 Padding(
@@ -138,7 +138,7 @@ class _HeroiDetailState extends State<HeroiDetail> {
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
-                    Text('Tem certeza que deseja deletar?'),
+                    Text('Deseja excluir o(a) ' + widget.heroi.name + '?'),
                   ],
                 ),
               ),
