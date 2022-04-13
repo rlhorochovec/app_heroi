@@ -1,4 +1,5 @@
 import 'package:app_heroi/model/heroi_model.dart';
+import 'package:app_heroi/page/heroi_add.dart';
 import 'package:app_heroi/service/heroi_service.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,13 @@ class _HeroiPageState extends State<HeroiPage> {
           },
         )),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _add(context);
+        },
+        tooltip: 'Adicionar',
+        child: Icon(Icons.add),
+      ),
     );
   }
 
@@ -51,5 +59,12 @@ class _HeroiPageState extends State<HeroiPage> {
       });
     });
     return futureHerois;
+  }
+
+  _add(BuildContext context) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HeroiAdd()),
+    );
   }
 }
