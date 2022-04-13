@@ -2,10 +2,14 @@ import 'package:app_heroi/model/heroi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../service/heroi_service.dart';
 import 'heroi_detail.dart';
+import 'heroi_edit.dart';
+import 'heroi_page.dart';
 
 class HeroiList extends StatelessWidget {
   final List<HeroiModel> herois;
+  final HeroiService api = HeroiService();
   HeroiList({Key key, this.herois}) : super(key: key);
 
   @override
@@ -15,77 +19,93 @@ class HeroiList extends StatelessWidget {
         itemCount: herois == null ? 0 : herois.length,
         itemBuilder: (BuildContext context, int index) {
           return Slidable(
-              // Specify a key if the Slidable is dismissible.
-              key: const ValueKey(0),
-
-              // The start action pane is the one at the left or the top side.
-              startActionPane: ActionPane(
-                // A motion is a widget used to control how the pane animates.
-                motion: const ScrollMotion(),
-                // A pane can dismiss the Slidable.
-                dismissible: DismissiblePane(onDismissed: () {}),
-                // All actions are defined in the children parameter.
-                children: const [
-                  // A SlidableAction can have an icon and/or a label.
-                  SlidableAction(
-                    onPressed: print,
-                    backgroundColor: Color(0xFF0392CF),
-                    foregroundColor: Colors.white,
-                    icon: Icons.archive,
-                    label: 'Arquivar',
-                  ),
-                  SlidableAction(
-                    onPressed: print,
-                    backgroundColor: Color(0xFF21B7CA),
-                    foregroundColor: Colors.white,
-                    icon: Icons.share,
-                    label: 'Compartilhar',
-                  ),
-                ],
+            actionPane: SlidableDrawerActionPane(),
+            actionExtentRatio: 0.25,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/' +
+                    herois[index]
+                        .name
+                        .toLowerCase()
+                        .replaceAll(RegExp(' '), '-') +
+                    '.jpg'),
               ),
-
-              // The end action pane is the one at the right or the bottom side.
-              endActionPane: const ActionPane(
-                motion: ScrollMotion(),
-                children: [
-                  SlidableAction(
-                    // An action can be bigger than the others.
-                    onPressed: print,
-                    backgroundColor: Color(0xFF7BC043),
-                    foregroundColor: Colors.white,
-                    icon: Icons.edit,
-                    label: 'Editar',
-                  ),
-                  SlidableAction(
-                    onPressed: print,
-                    backgroundColor: Color(0xFFFE4A49),
-                    foregroundColor: Colors.white,
-                    icon: Icons.delete,
-                    label: 'Excluir',
-                  ),
-                ],
+              title: Text(herois[index].name),
+              subtitle: Text(herois[index].civil),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () => _details(context, herois[index]),
+            ),
+            actions: <Widget>[
+              IconSlideAction(
+                closeOnTap: true,
+                caption: 'Detalhes',
+                color: Colors.black45,
+                icon: Icons.info,
+                onTap: () => _details(context, herois[index]),
               ),
-              // The child of the Slidable is what the user sees when the
-              // component is not dragged.
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/' +
-                      herois[index]
-                          .name
-                          .toLowerCase()
-                          .replaceAll(RegExp(' '), '-') +
-                      '.jpg'),
+            ],
+            secondaryActions: <Widget>[
+              IconSlideAction(
+                closeOnTap: true,
+                caption: 'Editar',
+                color: Colors.black45,
+                icon: Icons.edit,
+                onTap: () => _edit(context, herois[index]),
+              ),
+              IconSlideAction(
+                closeOnTap: true,
+                caption: 'Excluir',
+                color: Colors.red,
+                icon: Icons.delete,
+                onTap: () => _confirmDialog(context, herois[index]),
+              ),
+            ],
+          );
+        });
+  }
+
+  _details(BuildContext context, HeroiModel heroi) async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HeroiDetail(heroi)));
+  }
+
+  _edit(BuildContext context, HeroiModel heroi) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HeroiEdit(heroi)),
+    );
+  }
+
+  Future<void> _confirmDialog(BuildContext context, HeroiModel heroi) async {
+    return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (context) {
+          return AlertDialog(
+              title: Text('Confirme!'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Text('Deseja excluir o(a) ' + heroi.name + '?'),
+                  ],
                 ),
-                title: Text(herois[index].name),
-                subtitle: Text(herois[index].civil),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HeroiDetail(herois[index])));
-                },
-              ));
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Sim'),
+                  onPressed: () {
+                    api.del(heroi.id);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HeroiPage()));
+                  },
+                ),
+                FlatButton(
+                  child: const Text('Não'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ]);
         });
   }
 }
